@@ -98,8 +98,12 @@
                     transform: translateX(-100%);
                 }
             }
-            .demo, .videos, .github, .license {
+            .demo, .github, .license {
                 padding: 60px 0;
+            }
+            .videos {
+                padding: 60px 0;
+                display: none;
             }
             .demo h2, .videos h2, .github h2, .license h2 {
                 text-align: center;
@@ -297,6 +301,7 @@
         <script>
             // Add any necessary JavaScript here
             document.addEventListener('DOMContentLoaded', function () {
+
 
                 // Smooth scrolling for navigation links
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
