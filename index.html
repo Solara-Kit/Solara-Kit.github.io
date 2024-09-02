@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,13 +23,27 @@
                 padding: 0 20px;
             }
             header {
-                background-color: #FFD700;
+                background-color: #4A90E2;
                 padding: 20px 0;
             }
-            .logo {
+            .header-content {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .logo-container {
+                display: flex;
+                align-items: center;
+            }
+            .logo-img {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+            .logo-text {
                 font-size: 2.5rem;
                 font-weight: bold;
-                color: #333;
+                color: #FFD700;
             }
             nav {
                 margin-top: 20px;
@@ -42,7 +57,7 @@
             }
             nav ul li a {
                 text-decoration: none;
-                color: #333;
+                color: #FFD700;
                 font-weight: bold;
             }
             .hero {
@@ -152,17 +167,22 @@
     <body>
         <header>
             <div class="container">
-                <div class="logo">Solara</div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#dashboard">Dashboard</a></li>
-                        <li><a href="#demo">Demo</a></li>
-                        <li><a href="#videos">Videos</a></li>
-                        <li><a href="#github">GitHub</a></li>
-                        <li><a href="#license">License</a></li>
-                    </ul>
-                </nav>
+                <div class="header-content">
+                    <div class="logo-container">
+                        <img src="res/solara.png" alt="Solara Logo" class="logo-img">
+                        <div class="logo-text">Solara</div>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#dashboard">Dashboard</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                            <li><a href="#videos">Videos</a></li>
+                            <li><a href="#github">GitHub</a></li>
+                            <li><a href="#license">License</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </header>
 
