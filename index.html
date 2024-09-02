@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Solara - White Label Mobile App Management</title>
+        <link rel="icon" href="res/favicon/favicon.ico" type="image/x-icon">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            header {
+                background-color: #FFD700;
+                padding: 20px 0;
+            }
+            .logo {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #333;
+            }
+            nav {
+                margin-top: 20px;
+            }
+            nav ul {
+                list-style-type: none;
+                display: flex;
+            }
+            nav ul li {
+                margin-right: 20px;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+            .hero {
+                background-color: #FFF8DC;
+                padding: 60px 0;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+            .hero p {
+                font-size: 1.2rem;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .dashboard {
+                padding: 60px 0;
+                background-color: #F0F0F0;
+            }
+            .dashboard h2 {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .dashboard-img {
+                max-width: 100%;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .advantages {
+                padding: 60px 0;
+                overflow: hidden;
+            }
+            .advantages h2 {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .advantages-scroll {
+                display: flex;
+                animation: scroll 30s linear infinite;
+            }
+            .advantage-item {
+                flex: 0 0 300px;
+                margin-right: 40px;
+                padding: 20px;
+                background-color: #FFD700;
+                border-radius: 10px;
+            }
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+            .demo, .videos, .github, .license {
+                padding: 60px 0;
+            }
+            .demo h2, .videos h2, .github h2, .license h2 {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .video-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .video-item {
+                width: 30%;
+                margin-bottom: 20px;
+            }
+            .video-item iframe {
+                width: 100%;
+                height: 200px;
+            }
+            .github-repos {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .repo-item {
+                width: 30%;
+                margin-bottom: 20px;
+                padding: 20px;
+                background-color: #F0F0F0;
+                border-radius: 10px;
+            }
+            .license-content {
+                max-width: 800px;
+                margin: 0 auto;
+                background-color: #F0F0F0;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            footer {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 20px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="logo">Solara</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#github">GitHub</a></li>
+                        <li><a href="#license">License</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Solara</h1>
+                <p>A comprehensive Ruby library for streamlining white label mobile app management across iOS, Android, and Flutter platforms.</p>
+            </div>
+        </section>
+
+        <section id="dashboard" class="dashboard">
+            <div class="container">
+                <h2>Dashboard</h2>
+                <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+            </div>
+        </section>
+
+        <section class="advantages">
+            <div class="container">
+                <h2>Advantages of Solara</h2>
+                <div class="advantages-scroll">
+                    <div class="advantage-item">
+                        <h3>Cross-Platform Compatibility</h3>
+                        <p>Solara supports iOS, Android, and Flutter, allowing for cohesive management across different platforms.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Centralized Configurations</h3>
+                        <p>Solara offers a single point of control for managing all dynamic components of white label apps, making updates and consistency easier to achieve.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>User-Friendly Dashboard</h3>
+                        <p>The intuitive dashboard allows for quick navigation and management of multiple brands, streamlining the administrative process.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Powerful CLI Support</h3>
+                        <p>With robust command-line interface commands, developers can efficiently configure and control app settings without needing to navigate through the interfaces.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Seamless Brand Switching</h3>
+                        <p>Switching between brands is a piece of cake with Solara’s CLI or centralized dashboard.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Easy Onboarding and Offboarding</h3>
+                        <p>Adding or removing brands is straightforward with Solara’s CLI or centralized dashboard..</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Solara Doctor</h3>
+                        <p>This powerful feature automatically detects issues in application or brand configurations, running health checks every time you use Solara.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Effortless Brand Management</h3>
+                        <p>Easily switch and manage multiple brands, ensuring that each app remains aligned with its specific branding requirements.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Streamlined Development Workflow</h3>
+                        <p>By automating and simplifying configuration tasks, Solara enhances developer productivity and reduces the potential for errors.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Scalability</h3>
+                        <p>As your app portfolio grows, Solara can easily adapt to manage additional brands and dynamic components without a hitch.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>Consistent User Experience</h3>
+                        <p>Ensure that all apps maintain a uniform look and feel, enhancing user experience across different platforms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="demo">
+            <div class="container">
+                <h2>Demonstration</h2>
+                <p>Here's a quick demonstration of how Solara works:</p>
+                <!-- Add your demonstration content here -->
+            </div>
+        </section>
+
+        <section id="videos" class="videos">
+            <div class="container">
+                <h2>Video Tutorials</h2>
+                <div class="video-container">
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        <p>Getting Started with Solara</p>
+                    </div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        <p>Advanced Configurations</p>
+                    </div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        <p>Troubleshooting Common Issues</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="github" class="github">
+            <div class="container">
+                <h2>GitHub Repositories</h2>
+                <div class="github-repos">
+                    <div class="repo-item">
+                        <h3>Solara Core</h3>
+                        <p>The primary repository for the Solara library, serving as the backbone of the framework. It contains essential components and utilities for building applications with Solara. This library is constantly updated to ensure optimal performance and features for developers.</p>
+                        <a href="https://github.com/Solara-Toolkit/Solara" target="_blank">View on GitHub</a>
+                    </div>
+                    <div class="repo-item">
+                        <h3>Solara Infinite Project</h3>
+                        <p>A demonstration project showcasing Solara capabilities on Flutter, iOS and Android platforms. This project highlights best practices and provides a solid foundation for building while label applications using Solara. Explore its features and learn how to implement them in your own projects.</p>
+                        <a href="https://github.com/Solara-Toolkit/Infinite" target="_blank">View on GitHub</a>
+                    </div>
+                    <div class="repo-item">
+                        <h3>Solara Wiki</h3>
+                        <p>Your comprehensive resource for all documentation related to Solara. Your comprehensive resource for all documentation related to Solara. The wiki includes guides, tutorials, and reference materials to help you get the most out of the Solara framework.</p>
+                        <a href="https://github.com/Solara-Toolkit/Solara/wiki" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="license" class="license">
+            <div class="container">
+                <h2>License</h2>
+                <div class="license-content">
+                    <p>Solara is released under the MIT License. See the LICENSE file in the repository for full details.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Solara. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            // Add any necessary JavaScript here
+            document.addEventListener('DOMContentLoaded', function () {
+
+                // Smooth scrolling for navigation links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
