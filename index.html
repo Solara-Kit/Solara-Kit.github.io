@@ -78,13 +78,24 @@
                 padding: 60px 0;
                 background-color: #F0F0F0;
             }
+
             .dashboard h2 {
                 text-align: center;
                 margin-bottom: 40px;
             }
+
+            .scroll-container {
+                display: flex;
+                overflow-x: auto; /* Enables horizontal scrolling */
+                scroll-snap-type: x mandatory; /* Optional: adds snapping effect */
+            }
+
             .dashboard-img {
+                min-width: 1000px; /* Set a minimum width to each item */
                 max-width: 100%;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                scroll-snap-align: start; /* Optional: aligns items to the start */
+                margin-right: 20px; /* Spacing between images */
             }
             .advantages {
                 padding: 60px 0;
@@ -162,6 +173,75 @@
                 text-align: center;
                 padding: 20px 0;
             }
+
+            .terminal {
+                background-color: #1e1e1e;
+                border-radius: 5px;
+                overflow: hidden;
+                font-family: monospace;
+                margin-top: 20px;
+            }
+
+            .terminal-header {
+                background-color: #323232;
+                padding: 5px;
+                display: flex;
+            }
+
+            .terminal-button {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                margin-right: 6px;
+            }
+
+            .red {
+                background-color: #ff5f56;
+            }
+            .yellow {
+                background-color: #ffbd2e;
+            }
+            .green {
+                background-color: #27c93f;
+            }
+
+            .terminal-body {
+                padding: 10px;
+                color: #f0f0f0;
+            }
+
+            #terminal-content {
+                min-height: 200px;
+            }
+
+            .terminal-input-line {
+                display: flex;
+                align-items: center;
+            }
+
+            .prompt {
+                color: #27c93f;
+                margin-right: 5px;
+            }
+
+            #terminal-input {
+                background-color: transparent;
+                border: none;
+                color: #f0f0f0;
+                font-family: monospace;
+                font-size: 14px;
+                width: 100%;
+                outline: none;
+            }
+
+            .command-line {
+                margin-bottom: 5px;
+            }
+
+            .output-line {
+                color: #4a9;
+                margin-bottom: 10px;
+            }
         </style>
     </head>
     <body>
@@ -196,7 +276,37 @@
         <section id="dashboard" class="dashboard">
             <div class="container">
                 <h2>Dashboard</h2>
-                <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                <div class="scroll-container">
+                    <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                    <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                    <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                    <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                    <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                    <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                    <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
+                    <!-- You can add more images or content here to make it scrollable -->
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="demo">
+            <div class="container">
+                <h2>CLI Demonstration</h2>
+                <p>Here's a quick demonstration of how Solara works with CLI:</p>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-button red"></div>
+                        <div class="terminal-button yellow"></div>
+                        <div class="terminal-button green"></div>
+                    </div>
+                    <div class="terminal-body">
+                        <div id="terminal-content"></div>
+                        <div class="terminal-input-line">
+                            <span class="prompt">$</span>
+                            <input type="text" id="terminal-input" placeholder="Type a command...">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -249,14 +359,6 @@
                         <p>Ensure that all apps maintain a uniform look and feel, enhancing user experience across different platforms.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="demo" class="demo">
-            <div class="container">
-                <h2>Demonstration</h2>
-                <p>Here's a quick demonstration of how Solara works:</p>
-                <!-- Add your demonstration content here -->
             </div>
         </section>
 
@@ -333,6 +435,70 @@
                     });
                 });
             });
+
+            const commands = [
+                { cmd: "solara onboard -k brand5 -n \"Brand 5\"", output: "🎉 Onboarded brand5 successfully" },
+                { cmd: "solara onboard -c brand1 -k brand5 -n \"Brand 5\"", output: "🎉 Onboarded brand5 successfully, cloned from brand1" },
+                { cmd: "solara dashboard -k brand5", output: "🎉 Openning the dashoboard for brand5" },
+                { cmd: "solara switch -k brand5", output: "🎉 Switched to brand5 successfully." },
+                { cmd: "solara doctor -k brand5", output: "🎉 Health check for brand5 completed. All systems operational." },
+                { cmd: "solara offboard -k brand5", output: "🎉 Offboarded brand5 successfully." }
+            ];
+
+            const terminalContent = document.getElementById('terminal-content');
+            const terminalInput = document.getElementById('terminal-input');
+
+            let commandIndex = 0;
+
+            function addCommandLine(command) {
+                const commandLine = document.createElement('div');
+                commandLine.className = 'command-line';
+                commandLine.innerHTML = `<span class="prompt">$</span> $ {command}`;
+                terminalContent.appendChild(commandLine);
+            }
+
+            function addOutputLine(output) {
+                const outputLine = document.createElement('div');
+                outputLine.className = 'output-line';
+                outputLine.textContent = output;
+                terminalContent.appendChild(outputLine);
+            }
+
+            function processCommand(command) {
+                addCommandLine(command);
+                const matchedCommand = commands.find(cmd => cmd.cmd === command);
+                if (matchedCommand) {
+                    addOutputLine(matchedCommand.output);
+                } else {
+                    addOutputLine("Command not recognized. Please try again.");
+                }
+                terminalContent.scrollTop = terminalContent.scrollHeight;
+            }
+
+            terminalInput.addEventListener('keyup', function (event) {
+                if (event.key === 'Enter') {
+                    const command = this.value.trim();
+                    if (command) {
+                        processCommand(command);
+                        this.value = '';
+                    }
+                }
+            });
+
+            function autoRunCommands() {
+                if (commandIndex < commands.length) {
+                    const command = commands[commandIndex].cmd;
+                    terminalInput.value = command;
+                    setTimeout(() => {
+                        processCommand(command);
+                        commandIndex++;
+                        terminalInput.value = '';
+                        autoRunCommands();
+                    }, 2000);
+                }
+            }
+
+            autoRunCommands();
         </script>
     </body>
 </html>
