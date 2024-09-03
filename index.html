@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,115 +6,251 @@
         <title>Solara - White Label Mobile App Management</title>
         <link rel="icon" href="res/favicon/favicon.ico" type="image/x-icon">
         <style>
+            :root {
+
+              }
+            :root {
+                --primary-color: #4A90E2;
+                --secondary-color: #FFD700;
+                --background-color: #F0F0F0;
+                --text-color: #333;
+                --terminal-bg: #1e1e1e;
+                --terminal-text: #f0f0f0;
+                --secondary-color2: #f39c12;
+
+            }
+
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
+
             body {
-                font-family: Arial, sans-serif;
+                font-family: 'Roboto', Arial, sans-serif;
                 line-height: 1.6;
-                color: #333;
+                color: var(--text-color);
+                background-color: var(--background-color);
             }
+
             .container {
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 0 20px;
             }
+
             header {
-                background-color: #4A90E2;
+                background-color: var(--primary-color);
                 padding: 20px 0;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             }
+
             .header-content {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
             }
+
             .logo-container {
                 display: flex;
                 align-items: center;
             }
+
             .logo-img {
                 width: 50px;
                 height: 50px;
                 margin-right: 10px;
             }
+
             .logo-text {
                 font-size: 2.5rem;
                 font-weight: bold;
-                color: #FFD700;
+                color: var(--secondary-color);
             }
+
             nav {
                 margin-top: 20px;
             }
+
             nav ul {
                 list-style-type: none;
                 display: flex;
             }
+
             nav ul li {
                 margin-right: 20px;
             }
+
             nav ul li a {
                 text-decoration: none;
-                color: #FFD700;
+                color: var(--secondary-color);
                 font-weight: bold;
+                transition: color 0.3s ease;
             }
+
+            nav ul li a:hover {
+                color: #fff;
+            }
+
             .hero {
-                background-color: #FFF8DC;
-                padding: 60px 0;
+                background-color: var(--background-color);
+                padding: 120px 20px 60px;
                 text-align: center;
+                position: relative;
+                overflow: hidden;
             }
-            .hero h1 {
-                font-size: 3rem;
-                margin-bottom: 20px;
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba(74, 144, 226, 0.1), rgba(243, 156, 18, 0.1));
+                z-index: 1;
             }
-            .hero p {
-                font-size: 1.2rem;
-                max-width: 800px;
+
+            .hero .container {
+                position: relative;
+                z-index: 2;
+                max-width: 1200px;
                 margin: 0 auto;
             }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                margin-bottom: 20px;
+                color: var(--primary-color);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                animation: fadeInDown 1s ease-out;
+            }
+
+            .hero h2 {
+                font-size: clamp(1.5rem, 3vw, 2.5rem);
+                margin-bottom: 30px;
+                color: #f39c12;
+                animation: fadeInUp 1s ease-out 0.3s both;
+            }
+
+            .hero p {
+                font-size: clamp(1rem, 2vw, 1.2rem);
+                max-width: 800px;
+                margin: 0 auto;
+                color: var(--text-color);
+                line-height: 1.6;
+                animation: fadeIn 1s ease-out 0.6s both;
+            }
+
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .hero {
+                    padding: 80px 20px 40px;
+                }
+            }
+
             .dashboard {
                 padding: 60px 0;
-                background-color: #F0F0F0;
+                background-color: #fff;
             }
 
             .dashboard h2 {
                 text-align: center;
                 margin-bottom: 40px;
+                color: var(--primary-color);
             }
 
             .scroll-container {
                 display: flex;
-                overflow-x: auto; /* Enables horizontal scrolling */
-                scroll-snap-type: x mandatory; /* Optional: adds snapping effect */
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .scroll-container::-webkit-scrollbar {
+                display: none;
             }
 
             .dashboard-img {
-                min-width: 1000px; /* Set a minimum width to each item */
+                min-width: 1000px;
                 max-width: 100%;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                scroll-snap-align: start; /* Optional: aligns items to the start */
-                margin-right: 20px; /* Spacing between images */
+                scroll-snap-align: start;
+                margin-right: 20px;
+                border-radius: 10px;
+                transition: transform 0.3s ease;
             }
+
+            .dashboard-img:hover {
+                transform: scale(1.02);
+            }
+
             .advantages {
                 padding: 60px 0;
                 overflow: hidden;
+                background-color: var(--background-color);
             }
+
             .advantages h2 {
                 text-align: center;
                 margin-bottom: 40px;
+                color: var(--primary-color);
             }
+
             .advantages-scroll {
                 display: flex;
                 animation: scroll 30s linear infinite;
             }
+
             .advantage-item {
                 flex: 0 0 300px;
                 margin-right: 40px;
                 padding: 20px;
-                background-color: #FFD700;
+                background-color: var(--secondary-color);
                 border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
             }
+
+            .advantage-item:hover {
+                transform: translateY(-5px);
+            }
+
             @keyframes scroll {
                 0% {
                     transform: translateX(0);
@@ -124,67 +259,89 @@
                     transform: translateX(-100%);
                 }
             }
+
             .demo, .github, .license {
                 padding: 60px 0;
+                background-color: #fff;
             }
+
             .videos {
                 padding: 60px 0;
                 display: none;
+                background-color: var(--background-color);
             }
+
             .demo h2, .videos h2, .github h2, .license h2 {
                 text-align: center;
                 margin-bottom: 40px;
+                color: var(--primary-color);
             }
+
             .video-container {
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
             }
+
             .video-item {
                 width: 30%;
                 margin-bottom: 20px;
             }
+
             .video-item iframe {
                 width: 100%;
                 height: 200px;
+                border-radius: 10px;
             }
+
             .github-repos {
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
             }
+
             .repo-item {
                 width: 30%;
                 margin-bottom: 20px;
                 padding: 20px;
-                background-color: #F0F0F0;
+                background-color: var(--background-color);
                 border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
             }
+
+            .repo-item:hover {
+                transform: translateY(-5px);
+            }
+
             .license-content {
                 max-width: 800px;
                 margin: 0 auto;
-                background-color: #F0F0F0;
+                background-color: var(--background-color);
                 padding: 20px;
                 border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
+
             footer {
-                background-color: #333;
+                background-color: var(--primary-color);
                 color: #fff;
                 text-align: center;
                 padding: 20px 0;
             }
 
             .terminal {
-                background-color: #1e1e1e;
-                border-radius: 5px;
+                background-color: var(--terminal-bg);
+                border-radius: 10px;
                 overflow: hidden;
-                font-family: monospace;
+                font-family: 'Fira Code', monospace;
                 margin-top: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
             .terminal-header {
                 background-color: #323232;
-                padding: 5px;
+                padding: 10px;
                 display: flex;
             }
 
@@ -206,17 +363,20 @@
             }
 
             .terminal-body {
-                padding: 10px;
-                color: #f0f0f0;
+                padding: 20px;
+                color: var(--terminal-text);
             }
 
             #terminal-content {
                 min-height: 200px;
+                max-height: 400px;
+                overflow-y: auto;
             }
 
             .terminal-input-line {
                 display: flex;
                 align-items: center;
+                margin-top: 10px;
             }
 
             .prompt {
@@ -227,8 +387,8 @@
             #terminal-input {
                 background-color: transparent;
                 border: none;
-                color: #f0f0f0;
-                font-family: monospace;
+                color: var(--terminal-text);
+                font-family: 'Fira Code', monospace;
                 font-size: 14px;
                 width: 100%;
                 outline: none;
@@ -241,6 +401,33 @@
             .output-line {
                 color: #4a9;
                 margin-bottom: 10px;
+            }
+
+            @media (max-width: 768px) {
+                .header-content {
+                    flex-direction: column;
+                }
+
+                nav {
+                    margin-top: 20px;
+                }
+
+                nav ul {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+
+                nav ul li {
+                    margin: 5px 10px;
+                }
+
+                .hero h1 {
+                    font-size: 2.5rem;
+                }
+
+                .repo-item, .video-item {
+                    width: 100%;
+                }
             }
         </style>
     </head>
@@ -257,7 +444,7 @@
                             <li><a href="#home">Home</a></li>
                             <li><a href="#dashboard">Dashboard</a></li>
                             <li><a href="#demo">Demo</a></li>
-                            <li><a href="#videos">Videos</a></li>
+                            <!--<li><a href="#videos">Videos</a></li>-->
                             <li><a href="#github">GitHub</a></li>
                             <li><a href="#license">License</a></li>
                         </ul>
@@ -269,7 +456,8 @@
         <section id="home" class="hero">
             <div class="container">
                 <h1>Solara</h1>
-                <p>A comprehensive Ruby library for streamlining white label mobile app management across iOS, Android, and Flutter platforms.</p>
+                <h2>Unlock the full potential of your white-label app management</h2>
+                <p>A comprehensive toolkit designed to streamline white-label solutions across iOS, Android, and Flutter. Enjoy simple onboarding, easy brand switching, and efficient management, all while ensuring scalability to grow with your business. Simplify deployment and enhance user experiences effortlessly.</p>
             </div>
         </section>
 
@@ -284,7 +472,6 @@
                     <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
                     <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
                     <img src="https://github.com/Solara-Toolkit/Solara/blob/main/etc/screenshots/dashboard/brands_management.png?raw=true" alt="Solara Dashboard" class="dashboard-img">
-                    <!-- You can add more images or content here to make it scrollable -->
                 </div>
             </div>
         </section>
@@ -332,11 +519,11 @@
                     </div>
                     <div class="advantage-item">
                         <h3>Seamless Brand Switching</h3>
-                        <p>Switching between brands is a piece of cake with Solara’s CLI or centralized dashboard.</p>
+                        <p>Switching between brands is a piece of cake with Solara's CLI or centralized dashboard.</p>
                     </div>
                     <div class="advantage-item">
                         <h3>Easy Onboarding and Offboarding</h3>
-                        <p>Adding or removing brands is straightforward with Solara’s CLI or centralized dashboard..</p>
+                        <p>Adding or removing brands is straightforward with Solara's CLI or centralized dashboard.</p>
                     </div>
                     <div class="advantage-item">
                         <h3>Solara Doctor</h3>
@@ -367,15 +554,15 @@
                 <h2>Video Tutorials</h2>
                 <div class="video-container">
                     <div class="video-item">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com" frameborder="0" allowfullscreen></iframe>
                         <p>Getting Started with Solara</p>
                     </div>
                     <div class="video-item">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com" frameborder="0" allowfullscreen></iframe>
                         <p>Advanced Configurations</p>
                     </div>
                     <div class="video-item">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com" frameborder="0" allowfullscreen></iframe>
                         <p>Troubleshooting Common Issues</p>
                     </div>
                 </div>
@@ -398,7 +585,7 @@
                     </div>
                     <div class="repo-item">
                         <h3>Solara Wiki</h3>
-                        <p>Your comprehensive resource for all documentation related to Solara. Your comprehensive resource for all documentation related to Solara. The wiki includes guides, tutorials, and reference materials to help you get the most out of the Solara framework.</p>
+                        <p>Your comprehensive resource for all documentation related to Solara. The wiki includes guides, tutorials, and reference materials to help you get the most out of the Solara framework.</p>
                         <a href="https://github.com/Solara-Toolkit/Solara/wiki" target="_blank">View on GitHub</a>
                     </div>
                 </div>
@@ -421,9 +608,7 @@
         </footer>
 
         <script>
-            // Add any necessary JavaScript here
             document.addEventListener('DOMContentLoaded', function () {
-
 
                 // Smooth scrolling for navigation links
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -439,7 +624,7 @@
             const commands = [
                 { cmd: "solara onboard -k brand5 -n \"Brand 5\"", output: "🎉 Onboarded brand5 successfully" },
                 { cmd: "solara onboard -c brand1 -k brand5 -n \"Brand 5\"", output: "🎉 Onboarded brand5 successfully, cloned from brand1" },
-                { cmd: "solara dashboard -k brand5", output: "🎉 Openning the dashoboard for brand5" },
+                { cmd: "solara dashboard -k brand5", output: "🎉 Opening the dashboard for brand5" },
                 { cmd: "solara switch -k brand5", output: "🎉 Switched to brand5 successfully." },
                 { cmd: "solara doctor -k brand5", output: "🎉 Health check for brand5 completed. All systems operational." },
                 { cmd: "solara offboard -k brand5", output: "🎉 Offboarded brand5 successfully." }
